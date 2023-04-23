@@ -41,17 +41,17 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
     // IMPLEMENTASI DARI ABSTRACT METHOD
     @Override
     public void tambah_data(){
-        System.out.println("----------- Petugas Vaksin Telah Berhasil Menambahkan Data Peserta ! -------------");
+        System.out.println("~~~~~~~~~~~~ Petugas Vaksin Telah Berhasil Menambahkan Data Peserta ! ~~~~~~~~~~~~");
     }
     
     @Override
     public void ubah_data(){
-        System.out.println("------------ Petugas Vaksin Telah Berhasil Mengubah Data Peserta ! --------------");
+        System.out.println("~~~~~~~~~~~~~ Petugas Vaksin Telah Berhasil Mengubah Data Peserta ! ~~~~~~~~~~~~~~");
     }
     
     @Override
     public void hapus_data(){
-        System.out.println("------------ Petugas Vaksin Telah Berhasil Menghapus Data Peserta ! --------------");
+        System.out.println("~~~~~~~~~~~~~ Petugas Vaksin Telah Berhasil Menghapus Data Peserta ! ~~~~~~~~~~~~~");
     }
     
     // AGAR OUTPUT RATA TENGAH
@@ -126,6 +126,7 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
          
                 Riwayat_Vaksin riwayat_vksBaru = new Riwayat_Vaksin("COVID-19", JV_anak, DV_anak, tgl_vaksin_anak, lokasi_vaksin_anak);
                 riwayat_vaksin.add(riwayat_vksBaru);
+                tambah_data();
                 riwayat_vksBaru.tambah_data_anak();
                 
                 break;
@@ -181,6 +182,7 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
                               
                 Riwayat_Vaksin riwayat_vksBaru = new Riwayat_Vaksin("COVID-19", JV_dewasa, DV_dewasa, tgl_vaksin_dewasa, lokasi_vaksin_dewasa);
                 riwayat_vaksin.add(riwayat_vksBaru);
+                tambah_data();
                 riwayat_vksBaru.tambah_data_dewasa();
                 
                 break;
@@ -359,6 +361,7 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
                         anak.get(index-1).setNama_ortu(ORTU_ANAK);
                         
                         ///pemanggilan method terupdate
+
                         anak.get(index-1).ubah_data();
                         
                         System.out.println(" ");
@@ -389,6 +392,7 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
                         riwayat_vaksin.get(index-1).setLokasi_vaksinasi(lokasi_vaksin_ANAK);
 
                         ///pemanggilan method terupdate
+                        ubah_data();
                         riwayat_vaksin.get(index-1).ubah_data_anak();
                     } else {
                         System.out.println("---------------- Data Peserta Vaksinasi COVID-19 Tidak Tersedia ! --------------");
@@ -472,6 +476,7 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
                         riwayat_vaksin.get(idx-1).setTgl_vaksinasi(tgl_vaksin_DEWASA);
                         riwayat_vaksin.get(idx-1).setLokasi_vaksinasi(lokasi_vaksin_DEWASA);
 
+                        ubah_data();
                         riwayat_vaksin.get(idx-1).ubah_data_dewasa();
                     
                     } else {
@@ -511,8 +516,10 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
                     System.out.print("Masukkan Urutan Peserta Vaksin Anak yang Ingin Dihapus : ");
                     int index = Integer.parseInt(br.readLine());
                     System.out.println("==================================================================================");
-
+                    System.out.println(" ");
+                    
                     if(index <= anak.size() || index > 0) {
+                        hapus_data();
                         anak.remove(index-1).hapus_data();
                         riwayat_vaksin.remove(index-1).hapus_data_anak();
                     } else {
@@ -532,8 +539,10 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
                     System.out.print("Masukkan Urutan Peserta Vaksin Dewasa yang Ingin Dihapus : ");
                     int idx = Integer.parseInt(br.readLine());
                     System.out.println("==================================================================================");
+                    System.out.println(" ");
 
                     if(idx <= dewasa.size() || idx > 0) {
+                        hapus_data();
                         dewasa.remove(idx-1).hapus_data();
                         riwayat_vaksin.remove(idx-1).hapus_data_dewasa();
                     } else {
@@ -564,6 +573,7 @@ public class Petugas_Vaksin extends User implements Data_Diri_Peserta{
             System.out.println("|                  5. Kembali ke Menu Utama                                      |");
             System.out.println("==================================================================================");
             System.out.print("                            Masukkan Pilihan Anda : ");
+            // EXCEPT HANDLING
             try{
                 int pilihan = Integer.parseInt(br.readLine());
                 System.out.println("==================================================================================");
