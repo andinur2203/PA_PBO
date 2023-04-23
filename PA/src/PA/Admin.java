@@ -9,6 +9,7 @@ package PA;
  * @author ASUS
  */
 
+
 import static PA.Main.menu_utama;
 import static PA.Petugas_Vaksin.centerString;
 import java.io.BufferedReader;
@@ -43,17 +44,17 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
     // IMPLEMENTASI DARI ABSTRACT METHOD
     @Override
     public void tambah_data(){
-        System.out.println("----- Administrator Telah Berhasil Menambahkan Informasi Jadwal & Lokasi ! -------");
+        System.out.println("~~~~~~ Administrator Telah Berhasil Menambahkan Informasi Jadwal & Lokasi ! ~~~~~~");
     }
     
     @Override
     public void ubah_data(){
-        System.out.println("-------  Administrator Telah Berhasil Mengubah Informasi Jadwal & Lokasi ! -------");
+        System.out.println("~~~~~~~  Administrator Telah Berhasil Mengubah Informasi Jadwal & Lokasi ! ~~~~~~~");
     }
     
     @Override
     public void hapus_data(){
-        System.out.println("------ Administrator Telah Berhasil Menghapus Informasi Jadwal & Lokasi ! --------");
+        System.out.println("~~~~~~ Administrator Telah Berhasil Menghapus Informasi Jadwal & Lokasi ! ~~~~~~~~");
     }
     
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -80,9 +81,10 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
         String nama_petugas_vaksin = br.readLine();
         System.out.println("==================================================================================");
         System.out.println(" ");
-                
+
         Jadwal_Lokasi JLBaru = new Jadwal_Lokasi(no_pos, jadwal, tempat, kelurahan, nama_petugas_vaksin);             
         jadwal_lokasi.add(JLBaru);
+        tambah_data();
         JLBaru.tambah_data();
     }
     
@@ -157,6 +159,7 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
                 jadwal_lokasi.get(index-1).setNama_petugas_vaksin(NAMA_PETUGAS_VAKSIN);
                         
                 ///pemanggilan method terupdate
+                ubah_data();
                 jadwal_lokasi.get(index-1).ubah_data();
             }
         }
@@ -178,8 +181,10 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
             System.out.print("Masukkan Urutan Informasi Jadwal & Lokasi yang Ingin Dihapus : ");
             int idx = Integer.parseInt(br.readLine());
             System.out.println("==================================================================================");
-        
+            System.out.println(" ");
+            
             if(idx <= jadwal_lokasi.size() || idx > 0) {
+                hapus_data();
                 jadwal_lokasi.remove(idx-1).hapus_data();
             } else {
                  System.out.println("---------------- Informasi Jadwal & Lokasi Vaksinasi COVID-19 Tidak Tersedia ! --------------");
@@ -189,7 +194,7 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
     
     @Override
     public void menu() throws IOException {
-        while (true) {
+        while(true){
             System.out.println("==================================================================================");
             System.out.println("|+-+-+-+-+-+-+-+-+-              MENU ADMINISTATOR             -+-+-+-+-+-+-+-+-+|"); 
             System.out.println("|+-+-+-+-+-+-       INFORMASI JADWAL & LOKASI VAKSINASI COVID-19     -+-+-+-+-+-+|");
@@ -200,6 +205,7 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
             System.out.println("|            4. Hapus  Informasi Jadwal & Lokasi Vaksinasi   [DELETE]            |");
             System.out.println("|            5. Kembali ke Menu Utama                                            |");
             System.out.println("==================================================================================");
+            // EXCEPT HANDLING
             try{
                 System.out.print("                            Masukkan Pilihan Anda : ");
                 int pilihan = Integer.parseInt(br.readLine());
@@ -239,5 +245,5 @@ public class Admin extends User implements Informasi_Jadwal_Lokasi{
                 System.out.println("");
             }
         }
-    }
+    }      
 }
