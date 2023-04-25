@@ -41,6 +41,7 @@ public class Main {
         System.out.println("==================================================================================");
     }
     
+    // PENERAPAN KEYWORD STATIC
     public static void menu_utama() throws IOException {
         Petugas_Vaksin petugas_vaksin = new Petugas_Vaksin();
         Admin admin = new Admin();
