@@ -12,12 +12,111 @@ package PA;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class Main {
     
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
+	public static void loginPetugas(){
+        Scanner s = new Scanner(System.in);
+        String filename = "src/PA/akunPetugas.csv";
+        String username, password;
+        Petugas_Vaksin petugas_vaksin = new Petugas_Vaksin();
+        try {
+            Path path = Paths.get(filename);
+            InputStream input = Files.newInputStream(path);
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+                System.out.println("==================================================================================");
+                System.out.println("|+-+-+-+-+-+-               lOGIN PAGE PETUGAS VAKSINASI             -+-+-+-+-+-+|");
+                System.out.println("----------------------------------------------------------------------------------");
+                System.out.println("|+-+-+-+-+-+-          SILAHKAN MASUKKAN USERNAME DAN PASSWORD       -+-+-+-+-+-+|");
+                System.out.println("==================================================================================");
+                System.out.print("Masukkan username: ");
+                username = s.nextLine();
+                System.out.print("Masukkan password: ");
+                password = s.nextLine();
+                String _temp=null;
+                String _user;
+                String _pass;
+                boolean found = false;
+                while ((_temp=reader.readLine())!=null){
+                    String[]file = _temp.split(",");
+                    _user = file[0];
+                    _pass = file[1];
+                    if(_user.equals(username)&&_pass.equals(password)){
+                        found = true;
+                    }
+                }
+                if (found==true){
+                    System.out.println("==================================================================================");
+                    System.out.println("                   ANDA BERHASIL LOGIN SEBAGAI PETUGAS");
+                    petugas_vaksin.menu();
+                }else{
+                    System.out.println("==================================================================================");
+                    System.out.println("                     USERNAME ATAU PASSWORD SALAH!                   ");
+                    System.out.println("          >>> SILAHKAN MASUKAN PASSWORD DAN USERNMAE YANG BENAR <<< ");
+                }
+            }
+                //new UserAccount();
+        }catch(IOException ex){
+            System.out.print(ex.getMessage());
+        }
+    }
+    
+    public static void loginAdmin(){
+        Scanner s = new Scanner(System.in);
+        String filename = "src/PA/akunAdmin.csv";
+        String username, password;
+        Admin admin = new Admin();
+        try {
+            Path path = Paths.get(filename);
+            InputStream input = Files.newInputStream(path);
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+                System.out.println("==================================================================================");
+                System.out.println("|+-+-+-+-+-+-            LOGIN PAGE ADMINISTRATOR VAKSINASI          -+-+-+-+-+-+|");
+                System.out.println("----------------------------------------------------------------------------------");
+                System.out.println("|+-+-+-+-+-+-          SILAHKAN MASUKKAN USERNAME DAN PASSWORD       -+-+-+-+-+-+|");
+                System.out.println("==================================================================================");
+                System.out.print("Masukkan username: ");
+                username = s.nextLine();
+                System.out.print("Masukkan password: ");
+                password = s.nextLine();
+                String _temp=null;
+                String _user;
+                String _pass;
+                boolean found = false;
+                while ((_temp=reader.readLine())!=null){
+                    String[]file = _temp.split(",");
+                    _user = file[0];
+                    _pass = file[1];
+                    if(_user.equals(username)&&_pass.equals(password)){
+                        found = true;
+                    }
+                }
+                if (found==true){
+                    System.out.println("==================================================================================");
+                    System.out.println("                 ANDA BERHASIL LOGIN SEBAGAI ADMINISTRATOR");
+                    admin.menu();
+                }else{
+                    System.out.println("==================================================================================");
+                    System.out.println("                     USERNAME ATAU PASSWORD SALAH!                   ");
+                    System.out.println("         >>> SILAHKAN MASUKAN PASSWORD DAN USERNMAE YANG BENAR <<< ");
+                }
+            }
+                //new UserAccount();
+        }catch(IOException ex){
+            System.out.print(ex.getMessage());
+        }
+    }
+
+    
+	
     // PENERAPAN KEYWORD FINAL PADA METHOD
     public static final void salam_pembuka() throws IOException{
         System.out.println("==================================================================================");
@@ -61,8 +160,8 @@ public class Main {
                 System.out.println("==================================================================================");
                 System.out.println(" ");
                 switch (pilihan) {
-                    case 1 -> admin.menu();
-                    case 2 -> petugas_vaksin.menu();
+                    case 1 -> loginAdmin();
+                    case 2 -> loginPetugas();
                     case 3 -> peserta.menu();
                     case 0 -> {
                         salam_penutup();
