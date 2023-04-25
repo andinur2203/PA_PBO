@@ -4,12 +4,12 @@
  */
 package PA;
 
-import static PA.Admin.jadwal_lokasi;
+import static PA.Petugas_Vaksin.jadwal_lokasi;
 import static PA.Main.menu_utama;
-import static PA.Petugas_Vaksin.anak;
-import static PA.Petugas_Vaksin.centerString;
-import static PA.Petugas_Vaksin.dewasa;
-import static PA.Petugas_Vaksin.riwayat_vaksin;
+import static PA.Admin.anak;
+import static PA.Admin.centerString;
+import static PA.Admin.dewasa;
+import static PA.Admin.riwayat_vaksin;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -70,7 +70,7 @@ public class Peserta extends User implements Pantau_Informasi_Vaksinasi{
     
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    
+    // PENERAPAN KEYWORD STATIC
     public static void tampil_peserta_anak() {
         if (anak.isEmpty()){
             System.out.println("--------------------- Data Peserta Vaksinasi COVID-19 Kosong ! ------------------");
@@ -109,6 +109,7 @@ public class Peserta extends User implements Pantau_Informasi_Vaksinasi{
         }
     }
     
+    // PENERAPAN KEYWORD STATIC
     public static void tampil_peserta_dewasa(){
         if (dewasa.isEmpty()){
             System.out.println("--------------------- Data Peserta Vaksinasi COVID-19 Kosong ! ------------------");
@@ -148,7 +149,6 @@ public class Peserta extends User implements Pantau_Informasi_Vaksinasi{
         }
     }
     
-    // ENCAPSULASI (Penggunaan GETTER untuk mengambil data)
     public void tampil_peserta() throws IOException{
         System.out.println("==================================================================================");
         System.out.println("|+-+-+-+-+-+-       MENU TAMPIL DATA PESERTA VAKSINASI COVID-19      -+-+-+-+-+-+|");
@@ -216,6 +216,7 @@ public class Peserta extends User implements Pantau_Informasi_Vaksinasi{
         }
     }
     
+    // IMPLEMENTASI METHOD DARI INTERFACE Pantau_Informasi_Vaksinasi
     @Override
     public void informasi_vaksin() throws IOException {
         System.out.println("==================================================================================");
@@ -238,6 +239,7 @@ public class Peserta extends User implements Pantau_Informasi_Vaksinasi{
         }
     }
     
+    // IMPLEMENTASI METHOD DARI INTERFACE Pantau_Informasi_Vaksinasi
     @Override
     public void menu() throws IOException {
         while (true) {
