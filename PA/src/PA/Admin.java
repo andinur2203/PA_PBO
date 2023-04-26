@@ -575,7 +575,7 @@ public class Admin extends User implements Data_Diri_Peserta{
         while (true) {
             System.out.println("==================================================================================");
             System.out.println("|+-+-+-+-+-+-+-+-+-              MENU ADMINISTATOR             -+-+-+-+-+-+-+-+-+|"); 
-            System.out.println("|+-+-+-+-+-+-       INFORMASI JADWAL & LOKASI VAKSINASI COVID-19     -+-+-+-+-+-+|");
+            System.out.println("|+-+-+-+-+-+-           PENDATAAN PESERTA VAKSINASI COVID-19         -+-+-+-+-+-+|");
             System.out.println("==================================================================================");
             System.out.println("|                  1. Tambah Data Peserta Vaksinasi   [CREATE]                   |");
             System.out.println("|                  2. Tampil Data Peserta Vaksinasi   [READ]                     |");
