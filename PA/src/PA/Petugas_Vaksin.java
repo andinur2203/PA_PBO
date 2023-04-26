@@ -203,7 +203,7 @@ public class Petugas_Vaksin extends User implements Informasi_Jadwal_Lokasi{
         while(true){
             System.out.println("==================================================================================");
             System.out.println("|+-+-+-+-+-+-+-+-+-          MENU PETUGAS VAKSINASI            -+-+-+-+-+-+-+-+-+|");
-            System.out.println("|+-+-+-+-+-+-           PENDATAAN PESERTA VAKSINASI COVID-19         -+-+-+-+-+-+|");
+            System.out.println("|+-+-+-+-+-+-       INFORMASI JADWAL & LOKASI VAKSINASI COVID-19     -+-+-+-+-+-+|");
             System.out.println("==================================================================================");
             System.out.println("|            1. Tambah Informasi Jadwal & Lokasi Vaksinasi   [CREATE]            |");
             System.out.println("|            2. Tampil Informasi Jadwal & Lokasi Vaksinasi   [READ]              |");
